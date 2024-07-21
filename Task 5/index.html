@@ -1,0 +1,99 @@
+<!-- Qno.5 Explain the difference between justify-items and justify-self using code examples -->
+In CSS Grid, `justify-items` and `justify-self` are properties used to align grid items along the inline (row) axis within their grid areas. Here's a detailed explanation with code examples:
+
+### `justify-items`
+
+The `justify-items` property aligns all the grid items within their respective grid areas along the inline (row) axis.
+
+#### Values:
+- `start`: Aligns the items at the start of the grid area.
+- `end`: Aligns the items at the end of the grid area.
+- `center`: Aligns the items at the center of the grid area.
+- `stretch`: Stretches the items to fill the grid area (default).
+
+#### Example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(2, 100px);
+      justify-items: center; /* Aligns all items to the center of their grid areas */
+      gap: 10px;
+    }
+    .grid-item {
+      background-color: lightblue;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+  </div>
+</body>
+</html>
+```
+
+In this example, all grid items are centered within their respective grid areas.
+
+### `justify-self`
+
+The `justify-self` property aligns a single grid item within its grid area along the inline (row) axis. It overrides the `justify-items` value for the specific item.
+
+#### Values:
+- `start`: Aligns the item at the start of the grid area.
+- `end`: Aligns the item at the end of the grid area.
+- `center`: Aligns the item at the center of the grid area.
+- `stretch`: Stretches the item to fill the grid area (default).
+
+#### Example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(2, 100px);
+      justify-items: start; /* Default alignment for all items */
+      gap: 10px;
+    }
+    .grid-item {
+      background-color: lightblue;
+      padding: 10px;
+    }
+    .grid-item.special {
+      justify-self: end; /* Overrides justify-items for this item */
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container">
+    <div class="grid-item">1</div>
+    <div class="grid-item special">2</div>
+    <div class="grid-item">3</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+  </div>
+</body>
+</html>
+```
+
+In this example, all grid items are aligned to the start of their grid areas, except for the second item, which is aligned to the end of its grid area due to the `justify-self: end;` property.

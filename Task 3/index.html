@@ -1,0 +1,130 @@
+<!-- Qno.3 Explain the use of grid-auto-row and grid-auto-column using code examples. -->
+`grid-auto-rows` and `grid-auto-columns` are properties in CSS Grid Layout that specify the size of implicit grid tracks. These tracks are created when you place grid items in positions that don't explicitly have a corresponding row or column defined in the grid template.
+
+Here's an explanation of both properties with code examples:
+
+### `grid-auto-rows`
+The `grid-auto-rows` property sets the size of rows that are implicitly created when items are placed outside the defined grid template.
+
+**Example:**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Auto Rows Example</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 100px 100px;
+            grid-auto-rows: 50px;
+            gap: 10px;
+        }
+        .item {
+            background-color: lightblue;
+            border: 1px solid blue;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div> <!-- This will create an implicit row -->
+        <div class="item">4</div>
+    </div>
+</body>
+</html>
+```
+
+In this example, the grid container has two columns defined, but only one row. When the third and fourth items are added, a new row is implicitly created, and it takes the height defined by `grid-auto-rows` (50px).
+
+### `grid-auto-columns`
+The `grid-auto-columns` property sets the size of columns that are implicitly created when items are placed outside the defined grid template.
+
+**Example:**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Auto Columns Example</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-rows: 100px 100px;
+            grid-auto-columns: 50px;
+            gap: 10px;
+        }
+        .item {
+            background-color: lightcoral;
+            border: 1px solid red;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item" style="grid-column: 1 / 2; grid-row: 1;">1</div>
+        <div class="item" style="grid-column: 2 / 3; grid-row: 1;">2</div>
+        <div class="item" style="grid-column: 3 / 4; grid-row: 1;">3</div> <!-- This will create an implicit column -->
+        <div class="item" style="grid-column: 4 / 5; grid-row: 1;">4</div> <!-- Another implicit column -->
+    </div>
+</body>
+</html>
+```
+
+In this example, the grid container has two rows defined, but no columns. When the third and fourth items are placed in columns that are not explicitly defined, new columns are implicitly created with the width defined by `grid-auto-columns` (50px).
+
+### Combining Both
+
+You can also use both `grid-auto-rows` and `grid-auto-columns` together to control the sizes of implicit rows and columns.
+
+**Example:**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Auto Rows and Columns Example</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 100px 100px;
+            grid-template-rows: 100px;
+            grid-auto-rows: 50px;
+            grid-auto-columns: 50px;
+            gap: 10px;
+        }
+        .item {
+            background-color: lightgreen;
+            border: 1px solid green;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div> <!-- This will create an implicit row -->
+        <div class="item">4</div> <!-- This will create another implicit row -->
+        <div class="item" style="grid-column: 3 / 4; grid-row: 1;">5</div> <!-- This will create an implicit column -->
+    </div>
+</body>
+</html>
+```
+
+In this example, the grid container defines two columns and one row. When additional items are added that exceed these definitions, new rows and columns are implicitly created with the sizes defined by `grid-auto-rows` and `grid-auto-columns`.
+
+These properties help manage the layout of items dynamically, ensuring that the grid expands as needed to accommodate content.
